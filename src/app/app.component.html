@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<div class="container">
+<form #regform="ngForm" (ngSubmit)="onClickReg(regform.value)">
+  <div class="formgroup">
+  <input type="text" name="nm" class="formcontrol" placeholder="Enter Name" ngModel>
+  </div>
+  <br>
+  <input type="text" name="ad" class="formcontrol" placeholder="Enter Address" ngModel>
+  <br>
+
+  <button type="submit" >submit</button>
+</form>
+</div>
+<div class="container">
+  <table border="1" cellpadding="10px">
+    <tr *ngFor="let g of d">
+      <td>{{g.sid}}</td>
+      <td>{{g.snm}}</td>
+      <td>{{g.sad}}</td>
+    </tr>
+  </table>
+</div>
+
