@@ -6,22 +6,27 @@
 </div>
 <div class="container">
 <form #regform="ngForm" (ngSubmit)="onClickReg(regform.value)">
+  <input type="hidden" name="fid" class="formcontrol" [ngModel]="fid">
   <div class="formgroup">
-  <input type="text" name="nm" class="formcontrol" placeholder="Enter Name" ngModel>
+  <input type="text" name="nm" class="formcontrol" placeholder="Enter Name" [ngModel]="fnm">
   </div>
   <br>
-  <input type="text" name="ad" class="formcontrol" placeholder="Enter Address" ngModel>
+  <input type="text" name="ad" class="formcontrol" placeholder="Enter Address" [ngModel]="fad">
   <br>
 
-  <button type="submit" >submit</button>
+  <button type="submit" *ngIf="!updBtn">Insert</button>
+  <button type="submit" *ngIf="updBtn">Update</button>
+  <button type="button" (click)="cancleUpdate()" *ngIf="updBtn">Cancle</button>
 </form>
 </div>
 <div class="container">
   <table border="1" cellpadding="10px">
-    <tr *ngFor="let g of d">
+    <tr *ngFor="let g of myservice.data">
       <td>{{g.sid}}</td>
       <td>{{g.snm}}</td>
       <td>{{g.sad}}</td>
+      <td><button (click)="onDeleteclk(g.sid)">Delete</button> </td>
+      <td><button (click)="onUpdateClk(g.sid)">Update</button> </td>
     </tr>
   </table>
 </div>
